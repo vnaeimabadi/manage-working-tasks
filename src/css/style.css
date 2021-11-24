@@ -184,3 +184,18 @@ p {
         width: 95vw;
     }
 }
+
+/*
+=============== 
+Header
+===============
+*/
+
+.header {
+    height: 3rem;
+    background: var(--clr-primary-5);
+    width: 100%;
+    display: grid;
+    align-items: center;
+    padding-left: 3rem;
+}
