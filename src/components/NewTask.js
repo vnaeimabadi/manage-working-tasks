@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const NewTask = () => {
+const NewTask = ({ style }) => {
   return (
-    <div className="section-center">
+    <div className="section-center" style={style}>
       <div className="new-task">
         <h1>Add a new Task</h1>
         <input placeholder="Title" className="new-task-title" />
