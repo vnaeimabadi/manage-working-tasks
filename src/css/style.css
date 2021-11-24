@@ -42,7 +42,7 @@ Variables
     --ff-secondary: "Open Sans", sans-serif;
     --transition: all 0.3s linear;
     --spacing: 0.25rem;
-    --radius: 0.5rem;
+    --radius: 0.3rem;
     --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     --max-width: 1170px;
@@ -198,4 +198,56 @@ Header
     display: grid;
     align-items: center;
     padding-left: 3rem;
+}
+
+/*
+=============== 
+New Task
+===============
+*/
+
+.new-task {
+    margin-top: 1.5rem;
+}
+
+.new-task h1 {
+    font-size: .85rem;
+    letter-spacing: 0.1rem;
+}
+
+.new-task-title {
+    width: 100%;
+    border: transparent;
+    border-bottom: 1px solid var(--clr-grey-5);
+    background: var(--clr-grey-9);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    height: 3rem;
+    padding-left: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.new-task-description {
+    width: 100%;
+    border: transparent;
+    border-bottom: 1px solid var(--clr-grey-5);
+    background: var(--clr-grey-9);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    min-height: 7.5rem;
+    padding-left: .85rem;
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn-new-task {
+    width: 100%;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    height: 2.5rem;
+    color: var(--clr-white);
+}
+
+.btn-new-task span {
+    margin-right: 0.95rem;
 }
