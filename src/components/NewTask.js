@@ -27,13 +27,17 @@ const NewTask = ({ style }) => {
     setDescription("");
   };
 
-  React.useEffect(() => {
+  const updateActiveButton = React.useCallback(() => {
     if (title.trim().length > 0 && description.trim().length > 0) {
       if (!activeButton) setActiveButton(true);
     } else {
       if (activeButton) setActiveButton(false);
     }
-  }, [title, description]);
+  }, [title, description, activeButton]);
+
+  React.useEffect(() => {
+    updateActiveButton();
+  }, [title, description, updateActiveButton]);
   return (
     <div className="section-center" style={style}>
       <div className="new-task">
