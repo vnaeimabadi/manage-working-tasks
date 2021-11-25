@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import SingleTask from "./SingleTask";
-import { useTaskState, useTaskSetState } from "../../providers/TaskProvider";
+import { useTaskState } from "../../providers/TaskProvider";
 
 const TaskList = () => {
   const tasks = useTaskState();
