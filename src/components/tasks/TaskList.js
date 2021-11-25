@@ -12,7 +12,7 @@ const TaskList = () => {
       </section>
       <section className="tasks">
         {tasks && tasks.length > 0 ? (
-          <div className="section-center single-task">
+          <div className="single-task">
             {tasks.map((data, index) => (
               <Fragment key={data.id}>
                 <SingleTask data={data} />
