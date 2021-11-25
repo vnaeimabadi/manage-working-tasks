@@ -169,6 +169,7 @@ p {
     background: var(--clr-primary-7);
 }
 
+
 /* section */
 .section {
     padding: 5rem 0;
@@ -297,7 +298,7 @@ Tasks
 
 .single-task {
     display: grid;
-    max-height: 42vh;
+    height: 42vh;
     overflow-y: scroll;
     grid-template-columns: 1fr 1fr;
     gap: .75rem 0.75rem;
@@ -312,8 +313,9 @@ Single Task Item
     background: var(--clr-white);
     border-radius: var(--radius);
     box-shadow: var(--dark-shadow);
-    min-height: 8rem;
+    height: 10rem;
     display: grid;
+
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     padding: 0.5rem 0.5rem;
@@ -331,10 +333,15 @@ Single Task Item
     letter-spacing: 0.1rem;
 }
 
+.single-task-item-description {
+    overflow-y: scroll;
+}
+
 .single-task-item-description p {
     font-size: .65rem;
     letter-spacing: 0.1rem;
     font-weight: bold;
+
     color: var(--clr-grey-1);
 }
 
@@ -362,4 +369,17 @@ Single Task Item
 .btn-single-task-item:hover {
     background: var(--clr-primary-5);
     cursor: default;
+}
+
+.empty-task {
+    display: grid;
+    height: 42vh;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    align-content: center;
+}
+
+.empty-task p {
+    color: var(--clr-grey-1);
 }

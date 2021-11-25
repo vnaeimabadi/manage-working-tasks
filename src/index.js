@@ -6,15 +6,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Edit from "./screens/Edit";
+import TaskProvider from "./providers/TaskProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="edit" element={<Edit />} />
-      </Routes>
-    </BrowserRouter>
+    <TaskProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="edit" element={<Edit />} />
+        </Routes>
+      </BrowserRouter>
+    </TaskProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
