@@ -211,7 +211,7 @@ Header
     width: 100%;
     display: grid;
     align-items: center;
-    padding-left: 3rem;
+    padding-left: 1.2rem;
     color: var(--clr-white)
 }
 
@@ -415,4 +415,79 @@ Single Task Item
 
 .empty-task p {
     color: var(--clr-grey-1);
+}
+
+
+.edit-task {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+    height: calc(100vh - 3rem);
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.edit-task h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    margin-top: .95rem;
+}
+
+
+.edit-task-title {
+    width: 100%;
+    border: transparent;
+    border-bottom: 1px solid var(--clr-grey-5);
+    background: var(--clr-grey-9);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    height: 3rem;
+    padding-left: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit-task-description {
+    width: 100%;
+    border: transparent;
+    border-bottom: 1px solid var(--clr-grey-5);
+    background: var(--clr-grey-9);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    min-height: 7.5rem;
+    padding-left: .85rem;
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit-task-selector {
+    width: 100%;
+    border: transparent;
+    border-bottom: 1px solid var(--clr-grey-5);
+    background: var(--clr-grey-9);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    height: 3rem;
+    padding-left: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit-task-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.btn-edit-task {
+    width: 100%;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    background: var(--clr-primary-5);
+    height: 2.5rem;
+    color: var(--clr-white);
+}
+
+.btn-edit-task-cancel {
+    background: var(--clr-white);
+    color: var(--clr-grey-1);
+    border: 1px solid var(--clr-grey-5);
 }

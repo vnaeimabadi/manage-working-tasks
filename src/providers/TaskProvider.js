@@ -24,12 +24,27 @@ function useTaskSetState() {
 function useTaskActions() {
   const setTask = useTaskSetState();
   const tempData = useTaskState();
+
   const addNewTask = (newTask) => {
     let data = [...tempData, newTask];
     setTask(data);
   };
 
-  return { addNewTask };
+  const editTask = (taskId, editedData) => {
+    let allData = tempData;
+
+    let updatedData = allData.map((data) => {
+      if (data.id === taskId) {
+        data.title = editedData.title;
+        data.description = editedData.description;
+        data.status = editedData.status;
+      }
+      return data;
+    });
+    setTask(updatedData);
+  };
+
+  return { addNewTask, editTask };
 }
 
 export { useTaskState, useTaskSetState, useTaskActions };
