@@ -1,4 +1,5 @@
 import React from "react";
+import uuidv4 from "../helper/uuid";
 
 const TaskContext = React.createContext();
 const TaskContextSetState = React.createContext();
@@ -21,7 +22,16 @@ function useTaskState() {
 function useTaskSetState() {
   return React.useContext(TaskContextSetState);
 }
-function useTaskActions() {}
+function useTaskActions() {
+  const setTask = useTaskSetState();
+  const tempData = useTaskState();
+  const addNewTask = (newTask) => {
+    let data = [...tempData, newTask];
+    setTask(data);
+  };
+
+  return { addNewTask };
+}
 
 export { useTaskState, useTaskSetState, useTaskActions };
 export default TaskProvider;

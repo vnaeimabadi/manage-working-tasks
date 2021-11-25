@@ -259,15 +259,19 @@ New Task
     width: 100%;
     text-transform: capitalize;
     letter-spacing: 0.1rem;
+    background: var(--clr-primary-5);
     height: 2.5rem;
     color: var(--clr-white);
 }
 
+
 .btn-new-task span {
-    margin-right: 0.95rem;
+    color: var(--clr-white);
 }
 
-
+.btn-new-task-icon {
+    margin-right: 0.95rem;
+}
 
 /*
 =============== 
