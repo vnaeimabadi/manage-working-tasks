@@ -461,6 +461,14 @@ Single Task Item
     padding: 0.5rem 0;
 }
 
+
+@media screen and (min-width:768px) {
+    .edit-task {
+        max-width: 25vw;
+        min-width: 350px;
+    }
+}
+
 .edit-task h1 {
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
