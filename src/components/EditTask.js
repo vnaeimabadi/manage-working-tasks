@@ -4,40 +4,79 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useTaskActions } from "../providers/TaskProvider";
 import { useNavigate } from "react-router-dom";
 
+// const allStatus = [
+//   {
+//     id: 1,
+//     supportedId: [1, 2, 3],
+//     title: "inQA",
+//     value: "inQA",
+//   },
+//   {
+//     id: 2,
+//     supportedId: [2, 6],
+//     title: "Done",
+//     value: "done",
+//   },
+//   {
+//     id: 3,
+//     supportedId: [3, 4],
+//     title: "Todo",
+//     value: "todo",
+//   },
+//   {
+//     id: 4,
+//     supportedId: [1, 4, 5],
+//     title: "inProgress",
+//     value: "inProgress",
+//   },
+//   {
+//     id: 5,
+//     supportedId: [3, 5],
+//     title: "Blocked",
+//     value: "blocked",
+//   },
+//   {
+//     id: 6,
+//     supportedId: [6],
+//     title: "Deployed",
+//     value: "deployed",
+//   },
+// ];
+
 const allStatus = [
   {
     id: 1,
-    supportedId: [1, 2, 3],
+    supportedId: [1, 4],
     title: "inQA",
     value: "inQA",
   },
   {
     id: 2,
-    supportedId: [2, 6],
+    supportedId: [2, 1],
     title: "Done",
     value: "done",
   },
   {
     id: 3,
-    supportedId: [3, 4],
+    supportedId: [3, 5, 1],
     title: "Todo",
     value: "todo",
   },
   {
     id: 4,
-    supportedId: [1, 4, 5],
+    supportedId: [4, 3],
     title: "inProgress",
     value: "inProgress",
   },
   {
     id: 5,
-    supportedId: [3, 5],
+    supportedId: [5, 4],
     title: "Blocked",
     value: "blocked",
   },
   {
     id: 6,
-    supportedId: [6],
+    supportedId: [2, 6],
     title: "Deployed",
     value: "deployed",
   },
@@ -65,6 +104,7 @@ const EditTask = ({ style, selectedTask }) => {
     )[0].id;
 
     statusIdRef.current = selectedStatusId;
+    console.log(selectedStatusId);
     setStatus(value);
   };
   const editSingleTaskHandler = () => {
@@ -75,6 +115,7 @@ const EditTask = ({ style, selectedTask }) => {
       status: status,
       statusId: statusIdRef.current,
     };
+
     editTask(selectedTask.id, editedTask);
     navigate(-1);
   };

@@ -5,23 +5,23 @@ import { useTaskState } from "../../providers/TaskProvider";
 const TaskList = () => {
   const tasks = useTaskState();
 
+  let newTask = tasks.filter((data, index) => {
+    return data.status !== "deployed";
+  });
+
   return (
     <div className="task-list">
       <section className="section-center task-list-title ">
         <h1>Tasks</h1>
       </section>
       <section className="tasks">
-        {tasks && tasks.length > 0 ? (
+        {newTask && newTask.length > 0 ? (
           <div className="single-task">
-            {tasks.map((data, index) => {
-              return (
-                data.status !== "deployed" && (
-                  <Fragment key={data.id}>
-                    <SingleTask data={data} />
-                  </Fragment>
-                )
-              );
-            })}
+            {newTask.map((data) => (
+              <Fragment key={data.id}>
+                <SingleTask data={data} />
+              </Fragment>
+            ))}
           </div>
         ) : (
           <div className="empty-task">

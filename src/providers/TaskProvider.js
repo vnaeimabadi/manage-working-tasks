@@ -50,6 +50,7 @@ function useTaskActions() {
         data.title = editedData.title;
         data.description = editedData.description;
         data.status = editedData.status;
+        data.statusId = editedData.statusId;
       }
       return data;
     });
