@@ -4,6 +4,33 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useTaskActions } from "../providers/TaskProvider";
 import { useNavigate } from "react-router-dom";
 
+const allStatus = [
+  {
+    title: "inQA",
+    value: "inQA",
+  },
+  {
+    title: "Done",
+    value: "done",
+  },
+  {
+    title: "Todo",
+    value: "todo",
+  },
+  {
+    title: "inProgress",
+    value: "inProgress",
+  },
+  {
+    title: "Blocked",
+    value: "blocked",
+  },
+  {
+    title: "Deployed",
+    value: "deployed",
+  },
+];
+
 const EditTask = ({ style, selectedTask }) => {
   const navigate = useNavigate();
   const { editTask } = useTaskActions();
@@ -11,6 +38,7 @@ const EditTask = ({ style, selectedTask }) => {
   const [description, setDescription] = useState(selectedTask.description);
   const [status, setStatus] = useState(selectedTask.status);
   const [activeButton, setActiveButton] = useState(false);
+  const [statusItems, setStatusItems] = useState([]);
   const changeTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -40,9 +68,46 @@ const EditTask = ({ style, selectedTask }) => {
     }
   }, [title, description, activeButton]);
 
+  const renderStatus = React.useCallback(() => {
+    let temp = allStatus.filter((element) => {
+      if (selectedTask.status === "todo") {
+        if (element.value === "todo" || element.value === "inProgress")
+          return true;
+      } else if (selectedTask.status === "inQA") {
+        if (
+          element.value !== "inProgress" &&
+          element.value !== "blocked" &&
+          element.value !== "deploy"
+        )
+          return true;
+      } else if (selectedTask.status === "inProgress") {
+        if (
+          element.value !== "todo" &&
+          element.value !== "done" &&
+          element.value !== "deploy"
+        )
+          return true;
+      } else if (selectedTask.status === "blocked") {
+        if (element.value === "todo" || element.value === "blocked")
+          return true;
+      } else if (selectedTask.status === "done") {
+        if (element.value === "done" || element.value === "deployed")
+          return true;
+      } else if (selectedTask.status === "deployed") {
+        if (element.value === "deployed") return true;
+      }
+      return false;
+    });
+    setStatusItems(temp);
+  }, [selectedTask]);
+
   React.useEffect(() => {
     updateActiveButton();
   }, [title, description, updateActiveButton]);
+
+  React.useEffect(() => {
+    renderStatus();
+  }, [renderStatus]);
 
   return (
     <div className="section-center" style={style}>
@@ -60,16 +125,22 @@ const EditTask = ({ style, selectedTask }) => {
           value={description}
           onChange={changeDescription}
         />
-        <select
-          className="edit-task-selector"
-          value={status}
-          onChange={handleChangeStatus}
-        >
-          <option value="inQA">inQA</option>
-          <option value="done">Done</option>
-          <option value="todo">Todo</option>
-          <option value="inProgress">inProgress</option>
-        </select>
+
+        {statusItems.length > 0 && (
+          <select
+            className="edit-task-selector"
+            value={status}
+            onChange={handleChangeStatus}
+          >
+            {statusItems.map((element, index) => {
+              return (
+                <option value={element.value} key={index}>
+                  {element.title}
+                </option>
+              );
+            })}
+          </select>
+        )}
         <div className="edit-task-buttons">
           <button
             disabled={activeButton === true ? false : true}
