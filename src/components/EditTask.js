@@ -4,45 +4,6 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useTaskActions } from "../providers/TaskProvider";
 import { useNavigate } from "react-router-dom";
 
-// const allStatus = [
-//   {
-//     id: 1,
-//     supportedId: [1, 2, 3],
-//     title: "inQA",
-//     value: "inQA",
-//   },
-//   {
-//     id: 2,
-//     supportedId: [2, 6],
-//     title: "Done",
-//     value: "done",
-//   },
-//   {
-//     id: 3,
-//     supportedId: [3, 4],
-//     title: "Todo",
-//     value: "todo",
-//   },
-//   {
-//     id: 4,
-//     supportedId: [1, 4, 5],
-//     title: "inProgress",
-//     value: "inProgress",
-//   },
-//   {
-//     id: 5,
-//     supportedId: [3, 5],
-//     title: "Blocked",
-//     value: "blocked",
-//   },
-//   {
-//     id: 6,
-//     supportedId: [6],
-//     title: "Deployed",
-//     value: "deployed",
-//   },
-// ];
-
 const allStatus = [
   {
     id: 1,
@@ -104,7 +65,6 @@ const EditTask = ({ style, selectedTask }) => {
     )[0].id;
 
     statusIdRef.current = selectedStatusId;
-    console.log(selectedStatusId);
     setStatus(value);
   };
   const editSingleTaskHandler = () => {
