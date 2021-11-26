@@ -15,7 +15,7 @@ const TaskList = () => {
           <div className="single-task">
             {tasks.map((data, index) => {
               return (
-                data.status != "deployed" && (
+                data.status !== "deployed" && (
                   <Fragment key={data.id}>
                     <SingleTask data={data} />
                   </Fragment>

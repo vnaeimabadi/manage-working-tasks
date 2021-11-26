@@ -8,7 +8,7 @@ const App = () => {
   const { restoreTasks } = useTaskActions();
   React.useEffect(() => {
     restoreTasks();
-  }, []);
+  }, [restoreTasks]);
   return (
     <div>
       <Header>Home</Header>
