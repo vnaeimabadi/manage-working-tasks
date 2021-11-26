@@ -169,7 +169,7 @@ p {
     background: var(--clr-primary-7);
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 10px;
 
 }
@@ -180,7 +180,7 @@ p {
     border-radius: var(--radius-bigger);
     width: 5px;
     height: 20px;
-}
+} */
 
 /* section */
 .section {
@@ -324,6 +324,19 @@ Tasks
     /* width: 90vw;
     margin: 0 auto;
     max-width: 1170px; */
+}
+
+.single-task::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+.single-task::-webkit-scrollbar-thumb {
+    background: var(--clr-grey-1);
+    padding-left: 5px;
+    border-radius: var(--radius-bigger);
+    width: 5px;
+    height: 20px;
 }
 
 /*
