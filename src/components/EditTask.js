@@ -6,26 +6,38 @@ import { useNavigate } from "react-router-dom";
 
 const allStatus = [
   {
+    id: 1,
+    supportedId: [1, 2, 3],
     title: "inQA",
     value: "inQA",
   },
   {
+    id: 2,
+    supportedId: [2, 6],
     title: "Done",
     value: "done",
   },
   {
+    id: 3,
+    supportedId: [3, 4],
     title: "Todo",
     value: "todo",
   },
   {
+    id: 4,
+    supportedId: [1, 4, 5],
     title: "inProgress",
     value: "inProgress",
   },
   {
+    id: 5,
+    supportedId: [3, 5],
     title: "Blocked",
     value: "blocked",
   },
   {
+    id: 6,
+    supportedId: [6],
     title: "Deployed",
     value: "deployed",
   },
@@ -37,6 +49,7 @@ const EditTask = ({ style, selectedTask }) => {
   const [title, setTitle] = useState(selectedTask.title);
   const [description, setDescription] = useState(selectedTask.description);
   const [status, setStatus] = useState(selectedTask.status);
+  const statusIdRef = React.useRef(selectedTask.statusId);
   const [activeButton, setActiveButton] = useState(false);
   const [statusItems, setStatusItems] = useState([]);
   const changeTitle = (e) => {
@@ -47,6 +60,11 @@ const EditTask = ({ style, selectedTask }) => {
   };
   const handleChangeStatus = (e) => {
     const value = e.target.value;
+    let selectedStatusId = allStatus.filter(
+      (element) => element.value === value
+    )[0].id;
+
+    statusIdRef.current = selectedStatusId;
     setStatus(value);
   };
   const editSingleTaskHandler = () => {
@@ -55,6 +73,7 @@ const EditTask = ({ style, selectedTask }) => {
       title: title,
       description: description,
       status: status,
+      statusId: statusIdRef.current,
     };
     editTask(selectedTask.id, editedTask);
     navigate(-1);
@@ -69,35 +88,9 @@ const EditTask = ({ style, selectedTask }) => {
   }, [title, description, activeButton]);
 
   const renderStatus = React.useCallback(() => {
-    let temp = allStatus.filter((element) => {
-      if (selectedTask.status === "todo") {
-        if (element.value === "todo" || element.value === "inProgress")
-          return true;
-      } else if (selectedTask.status === "inQA") {
-        if (
-          element.value !== "inProgress" &&
-          element.value !== "blocked" &&
-          element.value !== "deployed"
-        )
-          return true;
-      } else if (selectedTask.status === "inProgress") {
-        if (
-          element.value !== "todo" &&
-          element.value !== "done" &&
-          element.value !== "deployed"
-        )
-          return true;
-      } else if (selectedTask.status === "blocked") {
-        if (element.value === "todo" || element.value === "blocked")
-          return true;
-      } else if (selectedTask.status === "done") {
-        if (element.value === "done" || element.value === "deployed")
-          return true;
-      } else if (selectedTask.status === "deployed") {
-        if (element.value === "deployed") return true;
-      }
-      return false;
-    });
+    let temp = allStatus.filter((data) =>
+      data.supportedId.some((x) => x === selectedTask.statusId)
+    );
     setStatusItems(temp);
   }, [selectedTask]);
 

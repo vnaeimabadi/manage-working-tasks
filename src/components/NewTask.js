@@ -21,6 +21,7 @@ const NewTask = ({ style }) => {
       title: title,
       description: description,
       status: "todo",
+      statusId: 3,
     };
     addNewTask(data);
     setTitle("");
