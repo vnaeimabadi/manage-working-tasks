@@ -190,7 +190,7 @@ p {
 .section-center {
     width: 90vw;
     margin: 0 auto;
-    max-width: 1170px;
+    /* max-width: 1170px; */
 }
 
 @media screen and (min-width: 992px) {
@@ -324,6 +324,19 @@ Tasks
     /* width: 90vw;
     margin: 0 auto;
     max-width: 1170px; */
+}
+
+@media screen and (min-width: 720px) {
+    .single-task {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+@media screen and (min-width: 1017px) {
+    .single-task {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }
 
 .single-task::-webkit-scrollbar {
