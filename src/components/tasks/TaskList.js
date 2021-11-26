@@ -13,11 +13,15 @@ const TaskList = () => {
       <section className="tasks">
         {tasks && tasks.length > 0 ? (
           <div className="single-task">
-            {tasks.map((data, index) => (
-              <Fragment key={data.id}>
-                <SingleTask data={data} />
-              </Fragment>
-            ))}
+            {tasks.map((data, index) => {
+              return (
+                data.status != "deployed" && (
+                  <Fragment key={data.id}>
+                    <SingleTask data={data} />
+                  </Fragment>
+                )
+              );
+            })}
           </div>
         ) : (
           <div className="empty-task">

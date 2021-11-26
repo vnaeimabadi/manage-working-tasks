@@ -77,14 +77,14 @@ const EditTask = ({ style, selectedTask }) => {
         if (
           element.value !== "inProgress" &&
           element.value !== "blocked" &&
-          element.value !== "deploy"
+          element.value !== "deployed"
         )
           return true;
       } else if (selectedTask.status === "inProgress") {
         if (
           element.value !== "todo" &&
           element.value !== "done" &&
-          element.value !== "deploy"
+          element.value !== "deployed"
         )
           return true;
       } else if (selectedTask.status === "blocked") {

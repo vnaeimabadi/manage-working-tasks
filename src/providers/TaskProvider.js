@@ -25,9 +25,21 @@ function useTaskActions() {
   const setTask = useTaskSetState();
   const tempData = useTaskState();
 
+  const restoreTasks = () => {
+    let allData = tempData;
+    if (allData.length <= 0) {
+      let tasks = localStorage.getItem("tasks");
+      if (tasks != null && tasks !== undefined) {
+        let data = JSON.parse(tasks);
+        setTask(data);
+      }
+    }
+  };
+
   const addNewTask = (newTask) => {
     let data = [...tempData, newTask];
     setTask(data);
+    localStorage.setItem("tasks", JSON.stringify(data));
   };
 
   const editTask = (taskId, editedData) => {
@@ -42,9 +54,10 @@ function useTaskActions() {
       return data;
     });
     setTask(updatedData);
+    localStorage.setItem("tasks", JSON.stringify(updatedData));
   };
 
-  return { addNewTask, editTask };
+  return { addNewTask, editTask, restoreTasks };
 }
 
 export { useTaskState, useTaskSetState, useTaskActions };
